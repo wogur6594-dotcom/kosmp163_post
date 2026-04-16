@@ -9,6 +9,11 @@
   		SELECT * FROM "TB_NOTICE"
   	</select>
   	
+  	<!-- resulttype없고 파라미터 방아와야함 -->
+  	<insert id="create" parameterType="NoticeDTO">
+  		INSERT INTO "TB_NOTICE"
+  		VALUES (DEFAULT, #{boardTitle}, #{boardWriter}, #{boardContents}, now(), 0)
+  	</insert>
   	
   	
   	
