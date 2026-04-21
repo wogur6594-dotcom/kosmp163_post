@@ -1,13 +1,16 @@
 package com.jh.app.board;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.jh.app.file.FileDTO;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @Getter
+@Setter
 @ToString
 public class BoardDTO {
 	
@@ -17,5 +20,8 @@ public class BoardDTO {
 	private String boardContents;
 	private LocalDateTime boardDate;
 	private Long boardHit;
+	
+	
+	private List<FileDTO> list;
 
 }

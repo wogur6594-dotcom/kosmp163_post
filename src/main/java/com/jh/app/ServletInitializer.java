@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Kosmo163PostApplication.class);
+		return application.sources(KosmoPostApplication.class);
 	}
 
 }
