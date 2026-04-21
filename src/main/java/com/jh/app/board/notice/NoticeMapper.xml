@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <!-- mapper.java의 풀패키지명.클래스명 -->
-  <mapper namespace="com.winter.app.board.notice.NoticeMapper">
+  <mapper namespace="com.jh.app.board.notice.NoticeMapper">
   	<sql id="search_sql">
   		WHERE
   		<choose>
