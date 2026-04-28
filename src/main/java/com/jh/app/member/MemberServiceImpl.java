@@ -20,6 +20,11 @@ public class MemberServiceImpl implements MemberService{
 	private String name;
 	
 	@Override
+	public MemberDTO idCheck(MemberDTO memberDTO) throws Exception{
+		return memberMapper.detail(memberDTO);
+	}
+	
+	@Override
 	public int join(MemberDTO memberDTO, MultipartFile file) throws Exception {
 		// TODO Auto-generated method stub
 		//DB에 저장

@@ -47,7 +47,7 @@
 						  	<input type="file" name="attach" class="form-control">
 						  </div>
 						  				  					  
-						  <button type="submit" class="btn btn-primary">Submit</button>
+						  <button id="create" type="button" class="btn btn-primary">Submit</button>
 						</form>
                     	
                     

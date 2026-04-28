@@ -37,16 +37,16 @@
 							</div>
 
 						</c:forEach>
-						
+
 						<a href"="./create" class="btn btn-danger">상품등록</a>
 
 
 					</div>
 					<div class="row">
-    <div class="col">
-        <a href="./create" class="btn btn-primary">Create</a>
-    </div>
-</div>
+						<div class="col">
+							<a href="./create" class="btn btn-primary">Create</a>
+						</div>
+					</div>
 
 
 				</div>

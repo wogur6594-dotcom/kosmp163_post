@@ -54,6 +54,7 @@ public class QnaController {
 	public String create()throws Exception{
 		return "board/create";
 	}
+	
 
 	@PostMapping("create")
 	public String create(QnaDTO qnaDTO, @RequestParam("attach") MultipartFile [] attach)throws Exception{
