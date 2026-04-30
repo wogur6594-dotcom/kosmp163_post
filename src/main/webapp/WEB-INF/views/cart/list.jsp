@@ -19,28 +19,17 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">
-						Product List Page<a href="../cart/list" class="btn btn-danger">장바구니</a>
-					</h1>
+					<h1 class="h3 mb-4 text-gray-800">장바구니 List Page</h1>
 
 					<div class="row">
-						<c:forEach items="${list}" var="p">
-							<div class="col-4">
-								<div class="card" style="width: 18rem;">
-									<img src="/files/${name}/${p.productFileDTO.fileName}"
-										class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">${p.productName}</h5>
-
-										<a href="./detail?productNum=${p.productNum}"
-											class="btn btn-primary">상세보기</a>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
-						<a href="./create" class="btn btn-danger">상품등록</a>
+						<div>
+							<input type="checkbox" id="all">
+							<button id="selectdel" class="btn btn-primary">선택삭제</button>
+							<button class="btn btn-danger">선택가입</button>
+						</div>
 					</div>
+
+					<div class="row" id="list"></div>
 
 
 				</div>
@@ -55,6 +44,7 @@
 	<!-- End Wrapper -->
 
 	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
+	<script src="/js/cart/list.js"></script>
 
 </body>
 </html>

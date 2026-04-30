@@ -20,7 +20,8 @@ public class MemberServiceImpl implements MemberService{
 	private String name;
 	
 	@Override
-	public MemberDTO idCheck(MemberDTO memberDTO) throws Exception{
+	public MemberDTO idCheck(MemberDTO memberDTO) throws Exception {
+		// TODO Auto-generated method stub
 		return memberMapper.detail(memberDTO);
 	}
 	

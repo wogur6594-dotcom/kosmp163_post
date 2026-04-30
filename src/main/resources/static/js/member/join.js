@@ -6,64 +6,29 @@
 // 이메일 입력
 // 생일(현재보다 과거)
 
-const username = document.getElementById("username");
-const username_result = document.getElementById("username_result");
-const password = document.getElementById("password");
-const password_result = document.getElementById("password_result");
-const passwordcheck = document.getElementById("passwordcheck");
-const passwordcheck_result = document.getElementById("passwordcheck_result");
-const name = document.getElementById("name");
-const phone = document.getElementById("phone");
-const email = document.getElementById("email");
-const email_result = document.getElementById("email");
-const email_result2 = document.getElementById("email");
-const birth = document.getElementById("birth");
-const button = document.getElementById("button");
+console.log("member join")
 
+const checks = [false,false,false,false,false,false,false]
 
+const username = document.getElementById("username")
 
+username.addEventListener("blur", function(){
+    console.log("start")
+	let num="";
+	fetch(`./idCheck?username=${username.value}`)
+	.then(res => res.text())
+	.then(res => {
+		if(res.trim()==='1'){
+			//--- 사후 처리
+			console.log("중복 아님")
+			num = res;
+		}else {
+			//---- 
+			console.log("중복입니다")
+			num=res;
+		}
+	})
+	console.log(num)
+	console.log("finish")
 
-flag1 = false;
-flag2 = false;
-flag3 = false;
-
-username.addEventListener("blur", function() {
-    if (username.value.trim()=="") {
-        username_result.innerText = "username 입력"
-    } else {
-        username_result.innerText = ""
-        flag1 = true;
-    }
-});
-
-password.addEventListener("blur", function() {
-    if (password.value.length < 6) {
-        password_result.innerText = "password는 최소 6자리"
-    } else {
-        password_result.innerText = ""
-        flag2 = true;
-
-    }
-});
-passwordcheck.addEventListener("blur", function() {
-    if (passwordcheck.value != password.value) {
-        passwordcheck_result.innerText = "password와 일치해야함"
-    } else {
-        passwordcheck_result.innerText = ""
-        flag3 = true;
-    }
-});
-button.addEventListener("click", function() {
-    if (username.value.trim() != "" && flag2 && flag3==true) {
-        alert("성공")
-    } else {
-        alert("실패")
-    }
-username.addEventListener("blur",function(){
-    fetch(`./idCheck?username=${username.value}`)
-    .then(res => res.text())
-    .then(res => console.log(res))
 })
-});
-
-
