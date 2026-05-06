@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jh.app.board.BoardDTO;
-import com.jh.app.member.MemberDTO;
+import com.jh.app.file.FileDTO;
 import com.jh.app.pager.Pager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +32,19 @@ public class NoticeController {
 	@Value("${app.board.notice}")
 	private String name;
 	
-
 	@ModelAttribute("name")
 	public String getName() {
 		return this.name;
+	}
+	
+	@GetMapping("down")
+	public String fileDown(NoticeFileDTO noticeFileDTO, Model model)throws Exception{
+		
+		FileDTO fileDTO = noticeService.fileDetail(noticeFileDTO);
+		
+		model.addAttribute("fileDTO", fileDTO);
+		
+		return "fileDownView";
 	}
 	
 	@GetMapping("list")
@@ -51,14 +60,16 @@ public class NoticeController {
 	@GetMapping("detail")
 	public String detail(NoticeDTO noticeDTO, Model model)throws Exception{
 		BoardDTO boardDTO = noticeService.detail(noticeDTO);
-		if(boardDTO !=null) {
+		if(boardDTO != null) {
 			model.addAttribute("dto", boardDTO);
 			return "board/detail";
+			
 		}else {
-			model.addAttribute("result", "없는글");
+			model.addAttribute("result", "없는 글이다");
 			model.addAttribute("url", "./list");
 			return "commons/result";
 		}
+		
 	}
 	
 	@GetMapping("create")
@@ -67,11 +78,11 @@ public class NoticeController {
 	}
 
 	@PostMapping("create")
-	public String create(NoticeDTO noticeDTO, @RequestParam("attach") MultipartFile [] attach,Model model)throws Exception{
+	public String create(NoticeDTO noticeDTO, @RequestParam(value="attach", required = false) MultipartFile [] attach, Model model)throws Exception{
 		int result = noticeService.create(noticeDTO, attach);
 		if(result>0) {
 			model.addAttribute("result", "글 등록 성공");
-			model.addAttribute("url","./list");
+			model.addAttribute("url", "./list");
 		}
 		
 		

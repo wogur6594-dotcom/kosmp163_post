@@ -14,8 +14,8 @@ public class CartService {
 	@Autowired
 	private CartMapper cartMapper;
 	
-	public int delete(CartDTO cartDTO)throws Exception{
-		return cartMapper.delete(cartDTO);
+	public int delete(List<CartDTO> ar)throws Exception{
+		return cartMapper.delete(ar);
 	}
 	
 	public List<ProductDTO> list(MemberDTO memberDTO)throws Exception{

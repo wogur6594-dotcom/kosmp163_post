@@ -18,10 +18,10 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@GetMapping("create")
-	public void create()throws Exception {}
+	public void create()throws Exception{}
 	
 	@PostMapping("create")
-	public String create(AccountDTO accountDTO, HttpSession session)throws Exception {
+	public String create(AccountDTO accountDTO, HttpSession session)throws Exception{
 		Object obj = session.getAttribute("member");
 		MemberDTO memberDTO = (MemberDTO)obj;
 		
@@ -29,8 +29,8 @@ public class AccountController {
 		
 		int result = accountService.create(accountDTO);
 		
-		
 		return "redirect:/";
+		
 	}
 
 }

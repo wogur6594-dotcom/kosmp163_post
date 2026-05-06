@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jh.app.board.BoardDTO;
 import com.jh.app.board.notice.NoticeDTO;
+import com.jh.app.file.FileDTO;
 import com.jh.app.pager.Pager;
 
 @Controller
@@ -54,7 +55,6 @@ public class QnaController {
 	public String create()throws Exception{
 		return "board/create";
 	}
-	
 
 	@PostMapping("create")
 	public String create(QnaDTO qnaDTO, @RequestParam("attach") MultipartFile [] attach)throws Exception{
@@ -82,6 +82,16 @@ public class QnaController {
 	public String delete(QnaDTO qnaDTO)throws Exception{
 		int result = qnaService.delete(qnaDTO);
 		return "redirect:./list";
+	}
+	
+	@GetMapping("down")
+	public String fileDown(FileDTO fileDTO, Model model)throws Exception{
+		fileDTO = qnaService.fileDetail(fileDTO);
+		
+		model.addAttribute("fileDTO", fileDTO);
+		
+		return "fileDownView";
+		
 	}
 
 }

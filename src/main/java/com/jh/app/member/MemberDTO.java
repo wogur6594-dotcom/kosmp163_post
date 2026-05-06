@@ -2,21 +2,37 @@ package com.jh.app.member;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 @Setter
 @Getter
 @ToString
 public class MemberDTO {
-	
+
+	@NotBlank(groups = GroupAdd.class, message = "ID는 필수 입니다")
 	private String username;
-	private String name;
-	private String password;
-	private String phone;
-	private String email;
-	private LocalDate birth;
 	
+	@NotBlank(groups = {GroupAdd.class, GroupUpdate.class})
+	private String name;
+	
+	@Size(groups = GroupAdd.class, max=10, min=4)
+	@NotBlank(groups = GroupAdd.class)
+	private String password;
+	
+	private String passwordCheck;
+	
+	private String phone;
+	@Email(groups = {GroupAdd.class, GroupUpdate.class})
+	private String email;
+	@Past(groups = {GroupAdd.class, GroupUpdate.class})
+	private LocalDate birth;
+
 	private ProfileDTO profileDTO;
 
 }

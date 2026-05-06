@@ -10,6 +10,7 @@
 	<script type="text/javascript">
 		alert("${result}");
 		location.href="${url}";
+	
 	</script>
 	
 </body>

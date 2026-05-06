@@ -3,6 +3,7 @@ package com.jh.app.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jh.app.file.FileManager;
@@ -18,6 +19,38 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Value("${app.member}")
 	private String name;
+	
+	@Override
+	public int update(MemberDTO memberDTO)throws Exception{
+		return memberMapper.update(memberDTO);
+		
+	}
+	
+	//사용자 정의 검증 메서드
+	public boolean doubleCheck(MemberDTO memberDTO, BindingResult bindingResult)throws Exception{
+		//false: 검증 통과
+		//true: 검증 실패
+		boolean result=false;
+		
+		//annotation으로 검증한 결과 담
+		result=bindingResult.hasErrors();
+		
+		//password 일치 하는지 검증
+		if(!memberDTO.getPassword().equals(memberDTO.getPasswordCheck())) {
+			bindingResult.rejectValue("passwordCheck", "member.passwordCheck.notEqual");
+			result=true;
+		}
+		
+		//ID 중복 검사
+		MemberDTO m = memberMapper.detail(memberDTO);
+		
+		if(m!=null) {
+			result=true;
+			bindingResult.rejectValue("username", "member.username.equal");
+		}
+		
+		return result;
+	}
 	
 	@Override
 	public MemberDTO idCheck(MemberDTO memberDTO) throws Exception {

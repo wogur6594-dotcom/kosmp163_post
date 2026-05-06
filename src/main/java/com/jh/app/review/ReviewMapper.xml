@@ -11,11 +11,8 @@
   	</select>
   	<insert id="create" parameterType="ReviewDTO">
   		INSERT INTO "TB_REVIEW"
-		VALUES
-		(default, #{productNum}, #{username},
-		#{reviewContents},now(),
-		#{reviewStar} )
-		</insert>
+  		VALUES (default, #{username}, #{reviewContents}, #{reviewStar}, now(), #{productNum})
+  	</insert>
   	
   	<delete id="delete" parameterType="ReviewDTO">
   		DELETE FROM "TB_REVIEW"

@@ -31,24 +31,7 @@
 					<div>
 						<form:form method="post" modelAttribute="memberDTO"
 							enctype="multipart/form-data">
-							<div class="form-group">
-								<label for="username">Username</label>
-								<form:input path="username" cssClass="form-control"
-									id="username" />
-									<form:errors path="username"></form:errors>
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<form:password path="password" cssClass="form-control"
-									id="password" />
-									<form:errors path="password"></form:errors>
-							</div>
-							<div class="form-group">
-								<label for="passwordCheck">Password Check</label>
-								<form:password path="passwordCheck" class="form-control"
-									id="passwordCheck" />
-									<form:errors path="passwordCheck"></form:errors>
-							</div>
+
 							<div class="form-group">
 								<label for="name">Name</label>
 								<form:input path="name" class="form-control" id="name" />
@@ -66,7 +49,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="birth">Birth</label> <input type="date" name="birth"
+								<label for="birth">Birth</label> <input type="date" value=${birth} name="birth"
 									class="form-control" id="birth">
 									<form:errors path="birth"></form:errors>
 							</div>

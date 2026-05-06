@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,22 +27,28 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Create Page</h1>
+					<h1 class="h3 mb-4 text-gray-800">Login Page</h1>
 
 					<div>
-						<form action="./login" method="post" enctype="multipart/form-data">
+						<form:form action="./login" modelAttribute="memberDTO"
+							method="post" enctype="multipart/form-data">
 							<div class="form-group">
-								<label for="username">Username</label> <input type="text"
-									name="username" value="user" class="form-control" id="username">
-							</div>
 
+								<!-- form 의 input은 무조건 text -->
+								<form:input path="username" cssClass="form-control"
+									id="username" />
+								<form:errors path="username"></form:errors>
+								<!-- <input type="text" value="user1" name="username" class="form-control" id="username" > 위의 form:input -->
+							</div>
 							<div class="form-group">
-								<label for="password">Password</label> <input type="password"
-									name="password" value="1234" class="form-control" id="password">
+								<label for="password">Password</label>
+								<form:password path="password" cssClass="form-control"
+									id="password" />
+								<form:errors path="password"></form:errors>
 							</div>
-
 							<button type="submit" class="btn btn-primary">Submit</button>
-						</form>
+
+						</form:form>
 
 
 					</div>
